@@ -1,0 +1,28 @@
+bootJar.enabled = false
+jar.enabled = true
+
+description = 'Api Server Module'
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation project(':common')
+    implementation project(':domain')
+    implementation project(':external-client')
+
+    compileOnly 'org.projectlombok:lombok'
+
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.data:spring-data-commons:2.5.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+}

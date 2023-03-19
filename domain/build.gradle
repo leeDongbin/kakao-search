@@ -1,0 +1,11 @@
+bootJar.enabled = false
+jar.enabled = true
+
+description = 'Doamin Module'
+
+apply from: 'jpa.gradle'
+
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.h2database:h2'
+}
