@@ -14,7 +14,7 @@ public class PagingOption {
 
     public PagingOption(){
         this.pageNumber = 1;
-        this.pageSize = 20;
+        this.pageSize = 10;
     }
 
     public PagingOption(int pageSize,

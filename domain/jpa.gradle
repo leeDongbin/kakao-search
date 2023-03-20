@@ -15,7 +15,6 @@ dependencies{
     compileQuerydsl {
         options.annotationProcessorPath = configurations.querydsl
     }
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
 querydsl {

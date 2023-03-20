@@ -4,7 +4,7 @@ import biz.kakao.external.client.kakao.code.Sort;
 import biz.kakao.external.client.kakao.config.ExternalApiProperties;
 import biz.kakao.external.client.kakao.dto.KakaoApiResponse;
 import biz.kakao.external.client.kakao.exception.ApiStatusFailException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Component("kakaoSearchClient")
 public class KakaoSearchClient extends AbstractKakaoSearchClient {
 
