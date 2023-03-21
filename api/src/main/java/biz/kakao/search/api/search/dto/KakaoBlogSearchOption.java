@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -15,6 +16,7 @@ import lombok.ToString;
 @ApiModel(description = "카카오 블로그 검색 조건")
 public class KakaoBlogSearchOption {
 
+    @NotNull(message = "검색명을 입력해주세요.")
     @ApiModelProperty(value = "검색명")
     private String query;
 

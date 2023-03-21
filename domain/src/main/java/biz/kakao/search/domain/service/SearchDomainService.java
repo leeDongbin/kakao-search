@@ -14,8 +14,8 @@ public class SearchDomainService {
     private final SearchRepository searchRepository;
 
     @Transactional
-    public void createSearchWord(String searchWords) {
-        SearchEntity searchEntity = SearchEntity.createdBy(searchWords, false);
+    public void createSearchWord(String searchWord) {
+        SearchEntity searchEntity = SearchEntity.createdBy(searchWord, false);
         searchRepository.save(searchEntity);
     }
 

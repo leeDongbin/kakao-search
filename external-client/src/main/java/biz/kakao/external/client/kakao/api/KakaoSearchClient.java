@@ -10,6 +10,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import java.util.Objects;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -50,9 +51,10 @@ public class KakaoSearchClient extends AbstractKakaoSearchClient {
                                          Sort sort,
                                          Integer page,
                                          Integer size) {
+        String sortName = Objects.nonNull(sort) ? sort.getName() : null;
         return UriComponentsBuilder.fromUriString(externalApiProperties.getFindBlogUriPath())
                 .queryParam(QUERY_NAME, query)
-                .queryParam(SORT_NAME, sort.getName())
+                .queryParam(SORT_NAME, sortName)
                 .queryParam(PAGE_NAME, page)
                 .queryParam(SIZE_NAME, size)
                 .build()
@@ -64,7 +66,7 @@ public class KakaoSearchClient extends AbstractKakaoSearchClient {
         try {
             return kakaoSearchApiRestTemplate.exchange(uri, HttpMethod.GET, httpEntity, KakaoApiResponse.class);
         }catch(Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new ApiStatusFailException(e.getMessage());
         }
     }
 

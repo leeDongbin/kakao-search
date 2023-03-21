@@ -1,6 +1,8 @@
 package biz.kakao.search.domain.service;
 
+import biz.kakao.search.domain.dto.PopularSearchDto;
 import biz.kakao.search.domain.entity.PopularSearchEntity;
+import biz.kakao.search.domain.mapper.PopularSearchDtoMapper;
 import biz.kakao.search.domain.repository.PopularSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,11 @@ public class PopularSearchDomainService {
                 popularSearchRepository.save(popularSearchEntity);
             }
         });
+    }
+
+    public List<PopularSearchDto> findPopularSearch() {
+        List<PopularSearchEntity> getPopularSearchEntity= popularSearchRepository.findTop10ByOrderBySearchCountDesc();
+        return PopularSearchDtoMapper.map(getPopularSearchEntity);
     }
 
 }
